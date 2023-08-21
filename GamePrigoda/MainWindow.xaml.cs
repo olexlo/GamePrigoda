@@ -149,7 +149,7 @@ namespace GamePrigoda
                         bOne.Content = "спробувати використати предмет";
                         bOne.Visibility = Visibility.Visible;
                     }
-                    bThree.Visibility = Visibility.Visible;
+                    bTwo.Visibility = Visibility.Visible;
                     bTwo.Content = "відправитись в пошуки";
                     bThree.Content = "";
                     bThree.Visibility = Visibility.Hidden;
@@ -422,6 +422,7 @@ namespace GamePrigoda
                         case 111:
                         case 121:
                         case 131:
+                        case 141:
                             // самостійни пошуки - видправитися в пошуки (здобич - дрова - лісні мешканці)
                             randomNumber = random.Next(1, 4);
                             switch (randomNumber)
@@ -705,6 +706,11 @@ namespace GamePrigoda
                     fourText = "можна просто стояти та не чого не робити";
                     break;
                 case 24:
+                    // Магазин - нечого не робити === едина можливість скористатися пунктом допомога
+                    if (gra != "24")
+                    {
+                        bTwo.Visibility = Visibility.Hidden;
+                    }
                     // коли пункт  - нечого не робити - можно вмерти :-)
                     numSuccess = rdSuccess.Next(0, 2);
                     if (numSuccess != 0 && gra.Substring(1, 1) == "4")
@@ -722,22 +728,20 @@ namespace GamePrigoda
                         boolSuccess = false;
                         return;
                     }
-                    // Магазин - нечого не робити === едина можливість скористатися пунктом допомога
-                    if (gra != "24")
+                    else 
                     {
-                        bTwo.Visibility = Visibility.Hidden;
+                        bOne.Content = "самостійні пошуки";
+                        bTwo.Content = "допомога";
+                        bThree.Content = "";
+                        bThree.Visibility = Visibility.Hidden;
+                        bFour.Content = "";
+                        bFour.Visibility = Visibility.Hidden;
+                        origText = "Після подолання перешкод, гравець натрапляє на головну проблему втекти з міста.";
+                        oneText = "самостійно досліджувати та шукати виходи, бути обережним, правильно використовувати сподручні предмети";
+                        twoText = "пошукати допомогу в місцевих мешканців, бути доброзичливим, запропонувати обмін";
+                        threeText = "";
+                        fourText = "";
                     }
-                    bOne.Content = "самостійні пошуки";
-                    bTwo.Content = "допомога";
-                    bThree.Content = "";
-                    bThree.Visibility = Visibility.Hidden;
-                    bFour.Content = "";
-                    bFour.Visibility = Visibility.Hidden;
-                    origText = "Після подолання перешкод, гравець натрапляє на головну проблему втекти з міста.";
-                    oneText = "самостійно досліджувати та шукати виходи, бути обережним, правильно використовувати сподручні предмети";
-                    twoText = "пошукати допомогу в місцевих мешканців, бути доброзичливим, запропонувати обмін";
-                    threeText = "";
-                    fourText = "";
                     break;
                 default:
                     origText = "Гравець стоїть перед чотирма воротами, кожне з яких веде у різний район загубленого міста.";
