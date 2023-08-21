@@ -195,7 +195,8 @@ namespace GamePrigoda
                         case 212:
                         case 222:
                         case 232:
-                            // замок - (кімната з охороною, вельможа, ролгулянка замком) - запитати де вихід 
+                        case 242:
+                            // замок - (кімната з охороною, вельможа, прогулянка замком) - запитати де вихід 
                             numSuccess = rdSuccess.Next(0, 2);
                             if (numSuccess != 0)
                             {
@@ -445,6 +446,7 @@ namespace GamePrigoda
                         case 311:
                         case 321:
                         case 331:
+                        case 341:
                             // самостійни пошуки - видправитися в пошуки (кімната з охороною - вельможа - прогулянка замком)
                             randomNumber = random.Next(1, 4);
                             switch (randomNumber)
@@ -498,6 +500,19 @@ namespace GamePrigoda
                         case 232:
                             // магазин - (прикраси, карта, обмін) - інформація за предмет
                             tVidpov.Text += "\n" + "\"Герой\": Гравець запропонувал предмет в обмін на інформацію, їому допомогли знайти вихід з міста.";
+                            break;
+                        case 241:
+                            // магазин - нічого не робити - самостійно
+                            numSuccess = rdSuccess.Next(0, 2);
+                            if (numSuccess != 0)
+                            {
+                                tVidpov.Text += "\n" + "\"Герой\": Гравець самостійно знаходить вихід з міста.";
+                            }
+                            else
+                            {
+                                tVidpov.Text += "\n" + "\"Загублений\": Гравець самостійно спробував знайти вихід, але не вдаеться, заблукав.";
+                            }
+                            break;
                             break;
                         default:
                             break;
@@ -648,6 +663,7 @@ namespace GamePrigoda
                         case 212:
                         case 222:
                         case 232:
+                        case 242:
                             // магазин - (прикраси, карта, обмін) - допомога - напасти
                             randomNumber = random.Next(1, 3);
                             switch (randomNumber)
