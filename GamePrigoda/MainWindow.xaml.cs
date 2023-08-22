@@ -513,7 +513,6 @@ namespace GamePrigoda
                                 tVidpov.Text += "\n" + "\"Загублений\": Гравець самостійно спробував знайти вихід, але не вдаеться, заблукав.";
                             }
                             break;
-                            break;
                         default:
                             break;
                     }
